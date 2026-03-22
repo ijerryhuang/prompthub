@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PromptHub - 发现优质 AI 提示词</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <div class="logo">
+          <span class="logo-icon">💡</span>
+          <span class="logo-text">PromptHub</span>
+        </div>
+        <nav class="nav">
+          <a href="#" class="nav-link active">发现</a>
+          <a href="#" class="nav-link">分类</a>
+          <a href="#" class="nav-link">热门</a>
+          <button class="btn-primary">提交提示词</button>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <h1 class="hero-title">发现优质 AI 提示词</h1>
+      <p class="hero-subtitle">不知道如何用好大模型？来这里搜索、学习、复制提示词</p>
+      
+      <!-- Search Box -->
+      <div class="search-box">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="searchInput" class="search-input" placeholder="搜索提示词，比如：小红书、周报、代码解释...">
+        <button class="search-btn">搜索</button>
+      </div>
+      
+      <!-- Quick Tags -->
+      <div class="quick-tags">
+        <span class="quick-label">热门搜索：</span>
+        <span class="quick-tag" onclick="document.getElementById('searchInput').value='小红书';handleSearch('小红书')">小红书</span>
+        <span class="quick-tag" onclick="document.getElementById('searchInput').value='周报';handleSearch('周报')">周报</span>
+        <span class="quick-tag" onclick="document.getElementById('searchInput').value='代码';handleSearch('代码')">代码</span>
+        <span class="quick-tag" onclick="document.getElementById('searchInput').value='邮件';handleSearch('邮件')">邮件</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main class="main">
+    <div class="container">
+      <!-- Categories -->
+      <div class="categories-section">
+        <h2 class="section-title">分类浏览</h2>
+        <div class="category-list" id="categoryList">
+          <!-- Categories will be rendered by JS -->
+        </div>
+      </div>
+
+      <!-- Prompts Grid -->
+      <div class="prompts-section">
+        <div class="section-header">
+          <h2 class="section-title">热门提示词</h2>
+          <div class="sort-options">
+            <button class="sort-btn active" data-sort="recommend">⭐ 推荐</button>
+            <button class="sort-btn" data-sort="hot">🔥 热门</button>
+            <button class="sort-btn" data-sort="newest">🆕 最新</button>
+          </div>
+        </div>
+        
+        <div class="prompts-grid" id="promptsGrid">
+          <!-- Prompts will be rendered by JS -->
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Detail Modal -->
+  <div class="modal" id="detailModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="modal-category" id="modalCategory">分类</div>
+        <button class="modal-close" onclick="closeModal()">✕</button>
+      </div>
+      
+      <h2 class="modal-title" id="modalTitle">提示词标题</h2>
+      <p class="modal-desc" id="modalDesc">描述</p>
+      
+      <div class="prompt-box">
+        <div class="prompt-label">
+          <span>📝 提示词内容</span>
+          <button class="copy-btn" id="copyBtn" onclick="copyPrompt()">📋 复制</button>
+        </div>
+        <pre class="prompt-content" id="modalPrompt"></pre>
+      </div>
+      
+      <!-- 示例展示 -->
+      <div class="example-section" id="exampleSection" style="display: none;">
+        <div class="example-label-box">
+          <span>💡 使用效果示例</span>
+        </div>
+        <div class="example-tabs">
+          <button class="example-tab active" id="exampleInputTab" onclick="switchExampleTab('input')">输入示例</button>
+          <button class="example-tab" id="exampleOutputTab" onclick="switchExampleTab('output')">输出效果</button>
+        </div>
+        <div class="example-content">
+          <pre class="example-box" id="modalExampleInput"></pre>
+          <pre class="example-box" id="modalExampleOutput" style="display: none;"></pre>
+        </div>
+      </div>
+      
+      <div class="modal-footer">
+        <div class="modal-author">
+          <span>👤 作者：<span id="modalAuthor"></span></span>
+        </div>
+        <div class="modal-stats">
+          <span class="stat">❤️ <span id="modalLikes"></span></span>
+          <span class="stat">👁️ <span id="modalUsage"></span>次使用</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <span class="logo-icon">💡</span>
+          <span class="logo-text">PromptHub</span>
+        </div>
+        <p class="footer-text">让每个人都能用好 AI</p>
+        <div class="footer-links">
+          <a href="#">关于我们</a>
+          <a href="#">使用条款</a>
+          <a href="#">隐私政策</a>
+        </div>
+        <p class="footer-copyright">© 2026 PromptHub. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html> 
